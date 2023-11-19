@@ -1,16 +1,18 @@
 from deposito import deposito
+from saque import saque
 
-
-QUANTIDADE_DE_SAQUES_DIARIOS = 3
 
 extrato = []
 
 saldo = 0
 
-menu = '''
+saques_realizados = 0
+
+menu = f'''
 ###################################################################################################################################
                                        BEM - VINDO AO DANIELS BANK
 ###################################################################################################################################
+
 Digite uma das opções desejada:
 [ 1 ] = Déposito 
 [ 2 ] = Saque
@@ -24,7 +26,10 @@ while True:
   
   if(opcao == 1):
     saldo = deposito(saldo=saldo)
-     
+  
+  elif(opcao == 2):
+    saldo, saques_realizados = saque(saldo=saldo, saques_realizados=saques_realizados)  
+  
   if(opcao == 4):
     print("Obrigado por usar nosso banco, volte sempre!")
     break
