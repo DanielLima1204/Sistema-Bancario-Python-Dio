@@ -7,5 +7,4 @@ def deposito(saldo):
     return novo_saldo
   else:
     print("Valor Inválido, Tente novamente.")
-    novo_saldo = 0
-    return novo_saldo
+    return saldo 
