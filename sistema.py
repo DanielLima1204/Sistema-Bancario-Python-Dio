@@ -1,9 +1,11 @@
+from deposito import deposito
+
+
 QUANTIDADE_DE_SAQUES_DIARIOS = 3
 
-extrato = {}
+extrato = []
 
-saldo = 1500
-
+saldo = 0
 
 menu = '''
 ###################################################################################################################################
@@ -19,7 +21,12 @@ Digite uma das opções desejada:
 while True:
   print(menu)
   opcao = int(input('Digite a opção: '))
+  
+  if(opcao == 1):
+    saldo = deposito(saldo=saldo)
+     
   if(opcao == 4):
     print("Obrigado por usar nosso banco, volte sempre!")
-    break   
+    break
+  print(saldo)   
   
