@@ -1,8 +1,8 @@
 from deposito import deposito
 from saque import saque
+from extrato import extrato
 
-
-extrato = []
+extrato_info_list = []
 
 saldo = 0
 
@@ -25,13 +25,21 @@ while True:
   opcao = int(input('Digite a opção: '))
   
   if(opcao == 1):
-    saldo = deposito(saldo=saldo)
+    saldo, infor_para_extrato = deposito(saldo=saldo)
+    extrato_info_list.append(infor_para_extrato)
   
   elif(opcao == 2):
-    saldo, saques_realizados = saque(saldo=saldo, saques_realizados=saques_realizados)  
+    saldo, saques_realizados, infor_para_extrato = saque(saldo=saldo, saques_realizados=saques_realizados)
+    extrato_info_list.append(infor_para_extrato)
   
-  if(opcao == 4):
+  elif(opcao == 3):
+    extrato(dados=extrato_info_list)
+  
+  elif(opcao == 4):
     print("Obrigado por usar nosso banco, volte sempre!")
     break
-  print(saldo)   
+  else:
+    print("Opção Inválida. Tente novamente!")
+  
+    
   
