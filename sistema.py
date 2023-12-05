@@ -33,6 +33,7 @@ while True:
     extrato_info_list.append(infor_para_extrato)
   
   elif(opcao == 3):
+    ## Como minha implementação está diferente da proposta, deixarei o unico argumento passado como keyword.
     extrato(dados=extrato_info_list)
   
   elif(opcao == 4):
