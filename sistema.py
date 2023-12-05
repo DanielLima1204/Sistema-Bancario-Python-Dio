@@ -25,7 +25,7 @@ while True:
   opcao = int(input('Digite a opção: '))
   
   if(opcao == 1):
-    saldo, infor_para_extrato = deposito(saldo=saldo)
+    saldo, infor_para_extrato = deposito(saldo)
     extrato_info_list.append(infor_para_extrato)
   
   elif(opcao == 2):
