@@ -2,10 +2,13 @@ from deposito import deposito
 from saque import saque
 from extrato import extrato
 from criar_usuario import criar_usuario
+from criar_conta_corrente import criar_conta_corrente
 
 extrato_info_list = []
 
 usuarios_list = []
+
+contas_correntes = [] 
 
 saldo = 0
 
@@ -21,7 +24,8 @@ Digite uma das opções desejada:
 [ 2 ] = Saque
 [ 3 ] = Extrato
 [ 4 ] = Cadastrar Usuário
-[ 5 ] = Sair                                       
+[ 5 ] = Criar Conta Corrente
+[ 6 ] = Sair                                       
 '''
 
 while True:
@@ -43,6 +47,9 @@ while True:
     new_user = criar_usuario(usuarios_list)
     usuarios_list.append(new_user)
   elif(opcao == 5):
+    nova_conta_corrente = criar_conta_corrente(usuarios_list, contas_correntes)
+    contas_correntes.append(nova_conta_corrente)  
+  elif(opcao == 6):
     print("Obrigado por usar nosso banco, volte sempre!")
     break
   else:
