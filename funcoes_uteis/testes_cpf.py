@@ -1,11 +1,12 @@
 def testando_cpf_ja_existe(cpf_digitado, users_list):
-    resultado = None
+    if len(users_list) == 0:
+        return False
     for user in users_list:
         if user['CPF'] == cpf_digitado:
-            resultado = True
+            return True
         else:
-            resultado = False
-    return resultado
+            return False
+   
 
 def verificando_formato_cpf(cpf_digitado=''): # Função de validação do CPF
     cpf_digitado = cpf_digitado.replace('.', '')
