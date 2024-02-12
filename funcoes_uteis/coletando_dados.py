@@ -16,4 +16,4 @@ def coletando_info_usuario(user_list):
     user_state = str(input('Estado (Sigla ex: SE, RJ): '))
     
     user_full_adress = f'{user_location}, {user_number} - {user_district} - {user_city}/{user_state}'
-    return {'Nome': user_name, 'Data de Nascimento': user_date_of_birth, 'CPF': user_cpf, 'Endereço': user_full_adress}
+    return {'Nome': user_name, 'Data de Nascimento': user_date_of_birth, 'CPF': user_cpf, 'Endereco': user_full_adress}
