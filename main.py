@@ -48,7 +48,7 @@ while True:
     usuarios_list.append(new_user)
     print(usuarios_list)
   elif(opcao == 5):
-    nova_conta_corrente = criar_conta_corrente(usuarios_list, contas_correntes)
+    nova_conta_corrente = criar_conta_corrente(usuarios_list, len(contas_correntes))
     contas_correntes.append(nova_conta_corrente)  
   elif(opcao == 6):
     print("Obrigado por usar nosso banco, volte sempre!")

@@ -36,7 +36,7 @@ class ContaCorrente(Conta):
     self._limite = limite
     self._limite_saques = limite_saques  
 
-def criar_conta_corrente(user_list, contas_correntes):
+def criar_conta_corrente(user_list, qtd_contas_correntes):
   text = """
     ########################################################################################################################################
                                                   BEM - VINDO AO NOSSO BANCO
@@ -60,7 +60,7 @@ def criar_conta_corrente(user_list, contas_correntes):
   
     infor_nova_conta = {
       'Agencia': '0001',
-      'Número': '{}'.format(len(contas_correntes) + 1),
+      'Número': '{}'.format(qtd_contas_correntes + 1),
       'Nome': f'{nome}'
     }
     
