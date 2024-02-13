@@ -17,7 +17,12 @@ class PessoaFisica(Cliente):
     super().__init__(**kw)
     self._cpf = cpf
     self._nome = nome
-    self._data_de_nascimento = data_de_nascimento   
+    self._data_de_nascimento = data_de_nascimento
+  
+  @property
+  def cpf(self):
+    return self._cpf
+     
   def __str__(self):
     return f"Nome: {self._nome}\tCPF: {self._cpf}\tData de Nascimento: {self._data_de_nascimento}"
   

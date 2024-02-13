@@ -2,7 +2,7 @@ def testando_cpf_ja_existe(cpf_digitado, users_list):
     if len(users_list) == 0:
         return False
     for user in users_list:
-        if user['CPF'] == cpf_digitado:
+        if user.cpf == cpf_digitado:
             return True
         else:
             return False
