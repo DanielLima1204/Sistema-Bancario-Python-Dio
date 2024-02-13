@@ -31,12 +31,12 @@ class Conta:
     pass
 
 class ContaCorrente(Conta):
-  def __init__(self, limite, limite_saques, **kw):
+  def __init__(self, limite_saques=5, limite=15000.00, **kw):
     super().__init__(**kw)
     self._limite = limite
     self._limite_saques = limite_saques  
 
-def criar_conta_corrente(user_list, qtd_contas_correntes):
+def criar_conta_corrente(users_list, qtd_contas_correntes):
   text = """
     ########################################################################################################################################
                                                   BEM - VINDO AO NOSSO BANCO
@@ -47,24 +47,23 @@ def criar_conta_corrente(user_list, qtd_contas_correntes):
   """
   def coletando_dados():
     cpf = str(input("Digite seu CPF(apenas números): "))
-    cpf_ja_existe = testando_cpf_ja_existe(cpf, user_list)
+    cpf_ja_existe = testando_cpf_ja_existe(cpf, users_list)
     if cpf_ja_existe == False:
       print("Este CPF não existe em nosso Cadastro de Usuários, Realize seu cadastro!")
       return
     
     #Obtendo nome da lista de usuario
     nome = None
-    for user in user_list:
-      if user['CPF'] == cpf:
-        nome = user['Nome']
-  
-    infor_nova_conta = {
-      'Agencia': '0001',
-      'Número': '{}'.format(qtd_contas_correntes + 1),
-      'Nome': f'{nome}'
-    }
-    
-    return infor_nova_conta
+    for user in users_list:
+      if user.cpf == cpf:
+        print(user)
+        nova_conta_corrente = ContaCorrente(
+          saldo=0.0,
+          numero=qtd_contas_correntes + 1,
+          agencia="0001",
+          cliente=user
+        )
+    return nova_conta_corrente
   
   while(True):
     print(text)
