@@ -61,13 +61,14 @@ def criar_conta_corrente(users_list, qtd_contas_correntes):
     nome = None
     for user in users_list:
       if user.cpf == cpf:
-        print(user)
         nova_conta_corrente = ContaCorrente.nova_conta(
           saldo=0.0,
           numero=qtd_contas_correntes + 1,
           agencia="0001",
           cliente=user
         )
+        user.adicionar_conta(nova_conta_corrente)
+        print(user)
     return nova_conta_corrente
   
   while(True):
