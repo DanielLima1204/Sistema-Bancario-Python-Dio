@@ -27,14 +27,19 @@ class Conta:
   def saldo(self):
     return self._saldo  
   
+  @classmethod
   def nova_conta(cls):
     pass
 
 class ContaCorrente(Conta):
-  def __init__(self, limite_saques=5, limite=15000.00, **kw):
+  def __init__(self, limite_saques, limite, **kw):
     super().__init__(**kw)
     self._limite = limite
-    self._limite_saques = limite_saques  
+    self._limite_saques = limite_saques
+  
+  @classmethod
+  def nova_conta(cls, limite_saques=5, limite=15000.00, **kw):
+    return cls(limite_saques, limite, **kw)     
 
 def criar_conta_corrente(users_list, qtd_contas_correntes):
   text = """
@@ -57,7 +62,7 @@ def criar_conta_corrente(users_list, qtd_contas_correntes):
     for user in users_list:
       if user.cpf == cpf:
         print(user)
-        nova_conta_corrente = ContaCorrente(
+        nova_conta_corrente = ContaCorrente.nova_conta(
           saldo=0.0,
           numero=qtd_contas_correntes + 1,
           agencia="0001",
