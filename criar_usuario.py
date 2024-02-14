@@ -22,9 +22,13 @@ class PessoaFisica(Cliente):
   @property
   def cpf(self):
     return self._cpf
+  
+  def adicionar_conta(self, conta):
+  #TODO checar se já existe uma conta corrente com este cpf
+    self._contas.append(conta)
      
   def __str__(self):
-    return f"Nome: {self._nome}\tCPF: {self._cpf}\tData de Nascimento: {self._data_de_nascimento}"
+    return f"Nome: {self._nome}\tCPF: {self._cpf}\tData de Nascimento: {self._data_de_nascimento}\tContas: {self._contas}"
   
 def criar_usuario(users_list):
   text = """
