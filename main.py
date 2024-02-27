@@ -33,8 +33,11 @@ while True:
   opcao = int(input('Digite a opção: '))
   
   if(opcao == 1):
-    saldo, infor_para_extrato = deposito(saldo)
-    extrato_info_list.append(infor_para_extrato)
+    resultado = deposito(usuarios_list)
+    if resultado == True:
+      print("Deposito Realizado com Sucesso.")
+    else:
+      print("Algo deu errado, Deposito não realizado.")  
   
   elif(opcao == 2):
     saldo, saques_realizados, infor_para_extrato = saque(saldo=saldo, saques_realizados=saques_realizados)
@@ -49,8 +52,7 @@ while True:
     print(usuarios_list)
   elif(opcao == 5):
     nova_conta_corrente = criar_conta_corrente(usuarios_list, len(contas_correntes))
-    contas_correntes.append(nova_conta_corrente)
-    print(contas_correntes)  
+    contas_correntes.append(nova_conta_corrente) 
   elif(opcao == 6):
     print("Obrigado por usar nosso banco, volte sempre!")
     break

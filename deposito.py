@@ -1,13 +1,28 @@
-def deposito(saldo): 
+from funcoes_uteis.buscando_usuario import buscando_usuario
+from funcoes_uteis.buscando_conta import buscando_conta
+from transacoes.transacao_deposito import Deposito
+    
+def deposito(lista_usuarios): 
   print(" ################## Voçe está na opção de déposito. #####################")
+  
+  # Encontrando user - Poderia ser feito na main
+  usuario_para_deposito = buscando_usuario(lista_usuarios)
+  if usuario_para_deposito == None:
+    print("Usuário não encontrado!")
+    return False 
+  
+  # Buscando a conta na instancia do User   
+  conta_para_deposito = buscando_conta(usuario_para_deposito)
+  if conta_para_deposito == None:
+    print("Esta conta não existe!")
+    return False
+  
   valor_do_deposito = float(input("Digite o valor para déposito: "))
-  if(valor_do_deposito > 0):
-    saldo_anterior = saldo
-    novo_saldo = saldo + valor_do_deposito
-    infor_para_extrato = {'Tipo de Operação': 'Deposito', 'Valor do deposito: ': f'R${valor_do_deposito:.2f}', 'Saldo Anterior': f'R${saldo_anterior:.2f}', 'Saldo Atual': f'R${novo_saldo:.2f}'}
-    print(f"Déposito Realizado com sucesso. Seu saldo é: {novo_saldo:.2f} R$")
-    return novo_saldo, infor_para_extrato
+  deposito = Deposito(valor_do_deposito)
+  
+  if usuario_para_deposito.realizar_transacao(conta_para_deposito, deposito) == True:
+    print(f"Déposito Realizado com sucesso. Seu saldo é: {conta_para_deposito.saldo:.2f} R$")
+    return True
   else:
-    print("Valor Inválido, Tente novamente.")
-    infor_para_extrato = {'Tipo de Operação': 'Deposito', 'Erro': 'Valor Inválido, Operação cancelada'} 
-    return saldo, infor_para_extrato 
+    return False
+ 
