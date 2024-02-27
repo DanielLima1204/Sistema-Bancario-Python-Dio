@@ -1,14 +1,18 @@
 from funcoes_uteis.menus import exibir_menu_de_confirmacao
-from funcoes_uteis.coletando_dados import coletando_info_usuario
+from funcoes_uteis.coletando_dados import coletando_info_usuario      
 
 class Cliente:
   def __init__(self, endereco):
     self._endereco = endereco
     self._contas = []
   
-  def realizar_transacao(self, conta, transacao):
-    pass 
+  @property
+  def contas_do_user(self):
+    return self._contas
   
+  def realizar_transacao(self, conta, transacao):
+    pass
+      
   def adicionar_conta(self, conta):
     pass
 
@@ -22,6 +26,9 @@ class PessoaFisica(Cliente):
   @property
   def cpf(self):
     return self._cpf
+  
+  def realizar_transacao(self, conta, transacao):
+    return transacao.registrar(conta)
   
   def adicionar_conta(self, conta):
   #TODO checar se já existe uma conta corrente com este cpf
