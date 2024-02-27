@@ -1,21 +1,10 @@
 from funcoes_uteis.testes_cpf import testando_cpf_ja_existe
-from abc import ABC, abstractmethod
 
 class Historico:
   def adicionar_transacao(self, transacao):
     pass
-
-class Transacao(ABC):
-  @abstractmethod
-  def deposito(self):
-    pass
-  @abstractmethod
-  def saque(self):
-    pass
-  def registrar(self, conta):
-    pass
-
-class Conta:
+        
+class Conta():
   def __init__(self, saldo, numero, agencia, cliente):
     self._saldo = saldo
     self._numero = numero
@@ -25,11 +14,22 @@ class Conta:
   
   @property
   def saldo(self):
-    return self._saldo  
+    return self._saldo
+  
+  @property
+  def numero(self):
+    return self._numero  
   
   @classmethod
   def nova_conta(cls):
     pass
+  
+  def depositar(self, valor):
+    if valor > 0:
+      self._saldo = self._saldo + valor
+      return True
+    else:
+      return False  
 
 class ContaCorrente(Conta):
   def __init__(self, limite_saques, limite, **kw):
