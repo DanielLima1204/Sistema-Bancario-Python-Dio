@@ -40,8 +40,11 @@ while True:
       print("Algo deu errado, Deposito não realizado.")  
   
   elif(opcao == 2):
-    saldo, saques_realizados, infor_para_extrato = saque(saldo=saldo, saques_realizados=saques_realizados)
-    extrato_info_list.append(infor_para_extrato)
+    resultado = saque(usuarios_list)
+    if resultado == True:
+      print("Saque Realizado com sucesso!")
+    else:
+      print("Algo deu errado, Saque não realizado.")  
   
   elif(opcao == 3):
     ## Como minha implementação está diferente da proposta, deixarei o unico argumento passado como keyword.
