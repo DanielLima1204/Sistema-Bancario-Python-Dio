@@ -28,21 +28,25 @@ class Conta():
     pass
 
 class ContaCorrente(Conta):
-  def __init__(self, limite_saques, limite, **kw):
+  def __init__(self, limite_saques, limite_de_saldo, **kw):
     super().__init__(**kw)
-    self._limite = limite
+    self._limite = limite_de_saldo
     self._limite_saques = limite_saques
   
   @classmethod
-  def nova_conta(cls, limite_saques=5, limite=15000.00, **kw):
-    return cls(limite_saques, limite, **kw)
+  def nova_conta(cls, limite_saques=5, limite_de_saldo=15000.00, **kw):
+    return cls(limite_saques, limite_de_saldo, **kw)
   
   def depositar(self, valor):
     if valor > 0:
       self._saldo = self._saldo + valor
       return True
     else:
-      return False       
+      return False
+    
+  def sacar(self, valor):
+    if valor < self._saldo:
+      return False         
 
 def criar_conta_corrente(users_list, qtd_contas_correntes):
   text = """
