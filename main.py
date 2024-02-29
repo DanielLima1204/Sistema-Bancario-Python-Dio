@@ -47,8 +47,7 @@ while True:
       print("Algo deu errado, Saque não realizado.")  
   
   elif(opcao == 3):
-    ## Como minha implementação está diferente da proposta, deixarei o unico argumento passado como keyword.
-    extrato(dados=extrato_info_list)
+    extrato(lista_usuarios=usuarios_list)
   elif(opcao == 4):
     new_user = criar_usuario(usuarios_list)
     usuarios_list.append(new_user)
