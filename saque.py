@@ -21,6 +21,7 @@ def saque(lista_usuarios):
   
   if usuario_para_saque.realizar_transacao(conta_para_saque, saque) == True:
     print(f"Saque Realizado com sucesso. Seu saldo é: {conta_para_saque.saldo:.2f} R$")
+    conta_para_saque.historico.adicionar_transacao(saque)
     return True
   else:
     return False

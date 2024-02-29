@@ -22,6 +22,7 @@ def deposito(lista_usuarios):
   
   if usuario_para_deposito.realizar_transacao(conta_para_deposito, deposito) == True:
     print(f"Déposito Realizado com sucesso. Seu saldo é: {conta_para_deposito.saldo:.2f} R$")
+    conta_para_deposito.historico.adicionar_transacao(deposito)
     return True
   else:
     return False
