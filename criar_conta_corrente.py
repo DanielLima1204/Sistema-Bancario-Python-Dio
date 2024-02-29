@@ -1,8 +1,5 @@
 from funcoes_uteis.testes_cpf import testando_cpf_ja_existe
-
-class Historico:
-  def adicionar_transacao(self, transacao):
-    pass
+from historico.Historico import Historico
         
 class Conta():
   def __init__(self, saldo, numero, agencia, cliente):
@@ -10,7 +7,7 @@ class Conta():
     self._numero = numero
     self._agencia = agencia
     self._cliente = cliente
-    self._historico = Historico()
+    self.historico = Historico()
   
   @property
   def saldo(self):
