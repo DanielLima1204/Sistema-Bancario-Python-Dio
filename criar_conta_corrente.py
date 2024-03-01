@@ -1,3 +1,5 @@
+from funcoes_uteis.buscando_usuario import buscando_usuario
+from funcoes_uteis.check_conta_corrente import usuario_tem_conta_corrente
 from funcoes_uteis.testes_cpf import testando_cpf_ja_existe
 from historico.Historico import Historico
         
@@ -60,24 +62,23 @@ def criar_conta_corrente(users_list, qtd_contas_correntes):
     [ 2 ] = Para SAIR.
   """
   def coletando_dados():
-    cpf = str(input("Digite seu CPF(apenas números): "))
-    cpf_ja_existe = testando_cpf_ja_existe(cpf, users_list)
-    if cpf_ja_existe == False:
+    usuario_conta_corrente = buscando_usuario(users_list)
+    if usuario_conta_corrente == None:
       print("Este CPF não existe em nosso Cadastro de Usuários, Realize seu cadastro!")
       return
-    
-    #Obtendo nome da lista de usuario
-    nome = None
-    for user in users_list:
-      if user.cpf == cpf:
-        nova_conta_corrente = ContaCorrente.nova_conta(
-          saldo=0.0,
-          numero=qtd_contas_correntes + 1,
-          agencia="0001",
-          cliente=user
-        )
-        user.adicionar_conta(nova_conta_corrente)
-        print(user)
+    #Testando se o usuario já tem uma conta corrente
+    if usuario_tem_conta_corrente(usuario_conta_corrente):
+      print("Já existe uma conta corrente vínculada a este CPF!")
+      return
+
+    nova_conta_corrente = ContaCorrente.nova_conta(
+      saldo=0.0,
+      numero=qtd_contas_correntes + 1,
+      agencia="0001",
+      cliente=usuario_conta_corrente
+    )
+    usuario_conta_corrente.adicionar_conta(nova_conta_corrente)
+    print(usuario_conta_corrente)
     return nova_conta_corrente
   
   while(True):
