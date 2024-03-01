@@ -1,7 +1,7 @@
 from funcoes_uteis.buscando_usuario import buscando_usuario
 from funcoes_uteis.check_conta_corrente import usuario_tem_conta_corrente
 from funcoes_uteis.testes_cpf import testando_cpf_ja_existe
-from historico.Historico import Historico
+from Classes.Historico import Historico
         
 class Conta():
   def __init__(self, saldo, numero, agencia, cliente):
