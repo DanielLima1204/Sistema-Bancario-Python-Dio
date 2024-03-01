@@ -4,15 +4,9 @@ from extrato import extrato
 from criar_usuario import criar_usuario
 from criar_conta_corrente import criar_conta_corrente
 
-extrato_info_list = []
-
 usuarios_list = []
 
 contas_correntes = [] 
-
-saldo = 0
-
-saques_realizados = 0
 
 menu = f'''
 ###################################################################################################################################
@@ -54,7 +48,8 @@ while True:
     print(usuarios_list)
   elif(opcao == 5):
     nova_conta_corrente = criar_conta_corrente(usuarios_list, len(contas_correntes))
-    contas_correntes.append(nova_conta_corrente) 
+    contas_correntes.append(nova_conta_corrente)
+    print(len(contas_correntes)) 
   elif(opcao == 6):
     print("Obrigado por usar nosso banco, volte sempre!")
     break
